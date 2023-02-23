@@ -1,6 +1,6 @@
 # Adam-Sinsuat-session-3-task-1
 
-Inverse data flow, callback function and introduction to UI frameworks.
+
 
 ## Features
 
