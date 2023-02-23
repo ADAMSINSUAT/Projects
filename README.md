@@ -38,7 +38,6 @@ Folder name is self explanatory
 
     src
     ├── api
-    ├── assets
     └── components
 
 ## Documentation
