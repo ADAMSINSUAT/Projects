@@ -1,5 +1,13 @@
-import React from "react";
-const App=()=>{
-	return<h1>Hello React</h1>;
-};
+import React, {Component} from "react";
+import FormValidation from "./components/FormValidation";
+
+class App extends Component{
+	render(){
+		return(
+			<>
+			<FormValidation></FormValidation>
+			</>
+		)
+	}
+}
 export default App;
