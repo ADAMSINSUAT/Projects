@@ -1,10 +1,10 @@
 # Adam-Sinsuat
 
-
+ useState hooks
 
 ## Features
 
-- 
+- This task introduces the useState hooks method. For this task, I used useState to update the value of the array arr. There's a button that's used for updating the second index of the array after inputing data in the input fields, and a second button which sets a predefined value to two properties of the array.
 
 ## Run Locally
 
@@ -35,8 +35,6 @@ Build your work(npm, target ES6)
 Folder name is self explanatory
 
     src
-    ├── ""
-    ├── ""
     └── components
 
 ## Documentation
