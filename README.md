@@ -1,10 +1,10 @@
 # Adam-Sinsuat
 
-
+High Ordered Component
 
 ## Features
 
-- 
+- Introduces higher-order component (HOC). It is an advanced technique in React for reusing component logic. In this project, it is used to randomly change the background color of two Box displays (namely Display1 and Display2).
 
 ## Run Locally
 
@@ -35,8 +35,6 @@ Build your work(npm, target ES6)
 Folder name is self explanatory
 
     src
-    ├── ""
-    ├── ""
     └── components
 
 ## Documentation
