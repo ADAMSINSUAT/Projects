@@ -1,2 +1,11 @@
 export const INC = 'INC';
 export const DEC = 'DEC';
+export const UPDATE = 'UPDATE';
+export const FUNCTIONUPDATE = 'FUNCTIONUPDATE';
+export const CLASSUPDATE = 'CLASSUPDATE';
+// export const NAME = 'NAME';
+// export const DOB = 'DOB';
+// export const AGE = 'AGE';
+// export const EMAIL = 'EMAIL';
+// export const OCC = 'OCC';
+// export const CN = 'CN';
