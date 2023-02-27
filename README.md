@@ -1,10 +1,10 @@
 # Adam-Sinsuat
 
-
+React-Redux
 
 ## Features
 
-- 
+- React-Redux, it is a third-party library that allows managing application state. It can be used as a central storage area so components only need to retrieve data from the same place and since it comes from the same central storage, data can be instantaneously synced.
 
 ## Run Locally
 
@@ -42,6 +42,7 @@ Folder name is self explanatory
 ## Documentation
 
 [React.JS](https://reactjs.org/docs/getting-started.html)  
+[React-Redux](https://react-redux.js.org/introduction/getting-started)
 
 ## Authors
 
