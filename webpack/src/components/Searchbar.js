@@ -1,42 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { map, filter, lowerCase } from "lodash";
-import { Box, Stack, TextField, Typography } from "@mui/material";
 import { Data } from "../data/Database";
+import { Box, TextField } from '@mui/material';
 
 export const SearchBar = () => {
-    const [searchResult, setSearchResult] = useState([])
-    const [search, setSearch] = useState("");
+    const [searchText, setSearchText] = useState("");
 
-    const searchQuery = (searchString) => {
-        const pattern = new RegExp(lowerCase(searchString));
-        const filterArr = filter(Data, function (data) {
-            const match = pattern.test(lowerCase(data.name));
-            return match;
-        })
+    const [searchFilter, setSearchFilter] = useState([]);
 
-        if (filterArr.length) {
-            setSearchResult([...filterArr])
-        } else {
-            setSearchResult([]);
+    useEffect(() => {
+        if (searchText.length > 0) {
+            setSearchFilter(Data.filter((person) => {
+                return lowerCase(person.name).match(lowerCase(searchText));
+            }))
+        }else{
+            setSearchFilter([]);
         }
-    }
+    }, [searchText])
 
     return (
-        <Box spacing={10} display="flex" direction="column" alignContent="center" justifyContent="center" sx={{flexDirection:"column", flexWrap:"wrap", border:1, borderColor:"black", borderRadius:1, p:1, m:1}}>
-            <TextField placeholder="Search for something..." value={search} onChange={(event) => { searchQuery(event.target.value); setSearch(event.target.value) }}></TextField>
+        <Box spacing={10} display="flex" direction="column" alignContent="center" justifyContent="center" sx={{ flexDirection: "column", flexWrap: "wrap", border: 1, borderColor: "black", borderRadius: 1, p: 1, m: 1 }}>
+            <TextField placeholder="Enter a name..." value={searchText} onChange={(event) => { setSearchText(event.target.value) }}></TextField>
             <Box>
-                {search.length>0 ? (
-                    map(searchResult, (result, index) => {
-                        return (
-                            <Stack sx={{my:2}} key={index} spacing={1} direction="column">
-                                    <p>Name: {result.name}</p>
-                                    <p>Age: {result.age}</p>
-                            </Stack>
-                        );
-                    })
-                ) : (
-                    <Typography sx={{my:2}} textAlign="center">No Result</Typography>
-                )}
+                {searchFilter.length > 0 ? (map(searchFilter, (data, index) => {
+                    return (
+                        <React.Fragment key={index}>
+                            Name: {data.name}
+                            <br />
+                            Age: {data.age}
+                            <br />
+                            Occupation: {data.occupation}
+                        </React.Fragment>
+                    )
+                }))
+                    :
+                    <></>}
+
             </Box>
         </Box >
     )
