@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Counter from "./components/Counter";
 import ClassUpdate from "./components/ClassUpdate";
 import FunctionUpdate from "./components/FunctionUpdate";
 

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect} from "react-redux";
 import { onUpdateClass } from '../action'
 import { slice, findIndex } from "lodash";
-// import { onChangeName, onChangeDOB, onChangeAge, onChangeEmail, onChangeOccupation, onChangeContactNo } from '../action';
 
 class ClassUpdate extends Component {
     handleUpdate = (id) => {
@@ -64,9 +63,6 @@ class ClassUpdate extends Component {
         this.props.updateData(empDataList)
     }
     render() {
-        // this.props.empData.map((data) => {
-        //     console.log(data.name)
-        // })
         return (
             <div>
                 <table style={{ border: "2px solid forestgreen", width: "800px", height: "200px" }}>

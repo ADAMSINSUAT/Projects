@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { onUpdate, onUpdateFunction } from '../action'
 import { slice, findIndex } from "lodash";
-// import { onChangeName, onChangeDOB, onChangeAge, onChangeEmail, onChangeOccupation, onChangeContactNo } from '../action';
 
 function FunctionUpdate(props){
 
