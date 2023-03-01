@@ -33,11 +33,6 @@ class Register extends React.Component {
     };
 
     handleChange = (e) => {
-        // console.log(e);
-        // console.log(e.target.value);
-        // console.log(e.target.id);
-
-        // this is referring to AddInfo
         if (e.target.id == "name") {
             this.validateName(e.target.value);
         }
@@ -93,7 +88,6 @@ class Register extends React.Component {
         const birthDate = parseISO(dob, "MM/dd/yyyy", new Date());
         const age = differenceInYears(new Date(), new Date(dob));
 
-        // console.log(birthDate)
         console.log(age);
         if (age < 18) {
             dobError = true;
@@ -104,13 +98,6 @@ class Register extends React.Component {
             dobErrorMessage = "";
             formValid = true;
         }
-        // } else if (dob.trim().length > 3) {
-        //     dobError = "Please enter valid date of birth";
-        //     formValid = false;
-        // } else {
-        //     dobError = "";
-        //     formValid = true;
-        // }
 
         this.setState({
             dob,

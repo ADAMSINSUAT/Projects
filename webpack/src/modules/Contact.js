@@ -16,9 +16,12 @@ class Contact extends Component {
     render() {
         return (
             <Box>
-                <Typography textAlign="center" sx={{ borderTop: 1, borderLeft: 1, borderRight: 1, bordercolor: "black", borderRadius: 1, mt: 2, fontSize: 20, p: 1, bgcolor: "white", fontColor: "black" }}>
-                    Contact Information
-                    <Stack justifyContent="center" alignItems="center" sx={{ mb: 1, bgcolor: "white", width: "100%", borderRadius: 1 }} direction="row" spacing={5}>
+                <Box sx={{ mt: 2, border:1, bordercolor: "black", borderRadius: 1,bgcolor:"white" }}>
+                    <Typography textAlign="center" sx={{ fontSize: 20, p: 1, fontColor: "black" }}>
+                        Contact Information
+                    </Typography>
+                    <Stack justifyContent="center" alignItems="center" sx={{ width: "100%" }} direction="row" spacing={5}>
+
                         <Card variant="outlined" sx={{ width: "300px", height: "50px", borderColor: "black", my: 1 }}>
                             <CardContent>
                                 <Typography>
@@ -35,9 +38,9 @@ class Contact extends Component {
                             </CardContent>
                         </Card>
                     </Stack>
-                </Typography>
+                </Box>
 
-                <Typography sx={{px:1, mt:1, bgcolor:"white", width:"80vh", height:"20px"}}>
+                <Typography sx={{ px: 1, mt: 1, bgcolor: "white", width: "80vh", height: "20px" }}>
                     Location: 2 Venture Dr, #10-18 Vision Exchange, Singapore 608526
                 </Typography>
                 <iframe

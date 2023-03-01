@@ -1,0 +1,4 @@
+export const GET_USERS_DATA = 'GET_USERS_DATA ';
+export const POST_USER_DATA = 'POST_USER_DATA';
+export const DELETE_USER_DATA = 'DELETE_USER_DATA';
+export const GET_USER_LIST = 'GET_USER_LIST';
