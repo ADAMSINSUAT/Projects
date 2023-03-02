@@ -1,10 +1,10 @@
 # Adam-Sinsuat
 
-React-Redux, Axios
+React-Redux, ReduxJS Toolkit, Axios
 
-This project is about posting data to an api: "https://reqres.in/api/users", and then display the response data to the UI. It also features react-redux for easy manipulation of states and data.
+This project is about retrieving data from an api: "http://jsonplaceholder.typicode.com/posts/", and then display the response data to the UI. It also features reduxjs toolkit for easy manipulation of states and data.
 
-Additional feature: Delete function: allows the user to delete a user from the array.
+User Interaction: Press the DOWNLOAD USERDATA AS EXCEL to download the data displayed on the UI.
 
 ## Features
 
@@ -40,15 +40,16 @@ Build your work(npm, target ES6)
 Folder name is self explanatory
 
     src
-    ├── ""
+    |
     ├── assets
-    └── modules───|
-                  ├──Employee───├──component
-                                ├──container
+    └── components|
+                  └── slicers
+                  
 ## Documentation
 
 [React.JS](https://reactjs.org/docs/getting-started.html)  
 [React-Redux](https://react-redux.js.org/introduction/getting-started)
+[ReduxJS Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 [Axios](https://axios-http.com/docs/intro)
 
 ## Authors
