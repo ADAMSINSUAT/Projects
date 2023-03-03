@@ -10,9 +10,9 @@ This project is about retrieving data from an api: "https://jsonplaceholder.typi
 
 ## Steps:
 1. Get the data from the "https://jsonplaceholder.typicode.com/posts" url using the getDataAPI slice.
-2. Store the response data in the userData slice array of object
-3. Display the userData's data array of object in the APIDisplay component
-4. Export the data userData's data array of object into the ExportExcel component's excelData props
+2. Store the response data in the userData slice array of object.
+3. Display the userData's data array of object in the APIDisplay component.
+4. Export the data userData's data array of object into the ExportExcel component's excelData props.
 5. Click the ExportExcel's button component {DOWNLOAD AS USERDATA EXCEL} to export the data from the APIDisplay component and save it as an Excel File.
 
 
