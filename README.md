@@ -1,10 +1,10 @@
 # Adam-Sinsuat
 
 Depedendencies:
-*React-Redux
-*ReduxJS Toolkit
-*Axios
-*SheetJS-Style
+"*"React-Redux
+"*"ReduxJS Toolkit
+"*"Axios
+"*"SheetJS-Style
 
 This project is about retrieving data from an api: "https://jsonplaceholder.typicode.com/posts", and then display the response data to the UI. It also features reduxjs toolkit for easy manipulation of states and data. Axios is used for API calls. And SheetJS-Style is used for designing the Excel File and for exporting it.
 
