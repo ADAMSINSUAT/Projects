@@ -1,30 +1,28 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// Create a new createApi function
 export const getDataAPI = createApi({
-     reducerPath: "getDataAPI",
+  // Sets the reducerPath name to "getDataAPI"
+  reducerPath: "getDataAPI",
 
+  //  Data fetching method 
   baseQuery: fetchBaseQuery({
+    // Sets the url for for the API
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
 
+  // Created an endpoint object
   endpoints: (builder) => ({
+    // Sets the endpoint object function name to getAllUser
     getAllUser: builder.query({
       query: () => ({
+        // Adds the endpoint "posts" to the baseUrl where it will get the data from.
         url: "posts",
+        // Sets the method to GET, signifying it will be getting a data from the url
         method: "GET",
       }),
-    }),
-
-    getUserById: builder.query({
-      query: (id) => {
-        console.log("ID", id);
-        return {
-          url: `posts/${id}`,
-          method: "GET",
-        };
-      },
     }),
   }),
 });
 
-export const { useGetAllUserQuery, useGetUserByIdQuery } = getDataAPI;
+export const { useGetAllUserQuery } = getDataAPI;
