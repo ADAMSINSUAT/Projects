@@ -8,18 +8,25 @@ import ExportExcel from "./ExportExcel";
 import _ from "lodash";
 
 const APIDisplay = () => {
-    let getUsers = useSelector(state=>state.user.userData)
+    let getUsers = useSelector(state => state.user.userData)
     const dispatch = useDispatch();
 
     //Variable for retrieving the data from the getDataAPI slicer
     const responseInfo = useGetAllUserQuery();
 
     useEffect(() => {
-        responseInfo.data? (
-            _.forEach(responseInfo.data?.slice(0, 5), function(data){
+        const newArray = [];
+        responseInfo.data ? (
+            _.forEach(responseInfo.data?.slice(0, 5), function (data) {
+                newArray.push({ ID: data.id, UserID: data.userId, Title: data.title, Body: data.body })
+                // dispatch(addUsers({ID: data.id, UserID: data.userId, Title: data.title, Body: data.body}))
+            })
+        ) : "";
+        newArray.length ? (
+            _.forEach(newArray, function (data) {
                 dispatch(addUsers(data))
             })
-            ): "";
+        ): "";
     }, [responseInfo.data])
 
     //Checks if responseInfo has any data and if it does, it will map the data to the UI, and if it doesn't
@@ -27,13 +34,13 @@ const APIDisplay = () => {
     const userList = getUsers.length ? (
         getUsers.map((user) => {
             return (
-                <React.Fragment key={user.id}>
+                <React.Fragment key={user.ID}>
                     <Card variant="outlined" sx={{ my: 1 }}>
                         <CardContent>
-                            <Typography textAlign="center">ID: {user.id}</Typography>
-                            <Typography textAlign="center">UserID: {user.userId}</Typography>
-                            <Typography textAlign="center">Title: {user.title}</Typography>
-                            <Typography textAlign="center">Body: {user.body}</Typography>
+                            <Typography textAlign="center">ID: {user.ID}</Typography>
+                            <Typography textAlign="center">UserID: {user.userID}</Typography>
+                            <Typography textAlign="center">Title: {user.Title}</Typography>
+                            <Typography textAlign="center">Body: {user.Body}</Typography>
                         </CardContent>
                     </Card>
                 </React.Fragment>
@@ -45,7 +52,7 @@ const APIDisplay = () => {
 
     return (
         <Box alignItems="center" alignContent="center" justifyContent="center" sx={{ border: 1, borderColor: "black", borderRadius: 1, bgcolor: "white", m: 1, p: 1 }}>
-            <ExportExcel excelData={getUsers} fileName="UserData Report Sheet"/>
+            <ExportExcel excelData={getUsers} fileName="UserData Report Sheet" />
             {userList}
         </Box>
     )

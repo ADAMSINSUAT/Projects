@@ -33,27 +33,27 @@ module.exports = {
                             },
                         },
                     },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            query: {
-                                mozjpeg: {
-                                    progressive: true,
-                                },
-                                gifsicle: {
-                                    interlaced: true,
-                                },
-                                optipng: {
-                                    optimizationLevel: 7,
-                                },
-                            },
-                        },
-                    },
+                    // {
+                    //     loader: 'image-webpack-loader',
+                    //     options: {
+                    //         query: {
+                    //             mozjpeg: {
+                    //                 progressive: true,
+                    //             },
+                    //             gifsicle: {
+                    //                 interlaced: true,
+                    //             },
+                    //             optipng: {
+                    //                 optimizationLevel: 7,
+                    //             },
+                    //         },
+                    //     },
+                    // },
                 ],
             },
         ],
     },
-    resolve: {
-        fallback: { "fs": false, "crypto": false },
-    },
+    // resolve: {
+    //     fallback: { "fs": false, "crypto": false },
+    // },
 };
