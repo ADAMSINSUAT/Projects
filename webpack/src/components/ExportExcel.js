@@ -8,22 +8,22 @@ import { useCallback } from "react";
 //Custom ExportExcel function
 const ExportExcel = ({ excelData, fileName }) => {
 
-    //Sets the file format of the excel file
-    const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheethtml.sheet;charset=UTF-8';
-
-    //Sets the file extension of the excel file
-    const fileExtenstion = '.xlsx';
-
     //This is called whenever the download button is being pressed
     const exportToExcel = async () => {
+
+        //Flatten the array of object
         const rows = excelData.map(row => ({
             UserID: row.UserID,
             ID: row.ID,
             Title: row.Title,
             Body: row.Body
         }))
+
+        //Convert the rows object into a xlsx worksheet
         const worksheet = XLSX.utils.json_to_sheet(rows);
+        //Appends a new book
         const workbook = XLSX.utils.book_new();
+        //Sets the book's name to Sheet1
         XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
         /* fix headers */
