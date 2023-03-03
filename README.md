@@ -10,10 +10,26 @@ This project is about retrieving data from an api: "https://jsonplaceholder.typi
 
 ## Steps:
 1. Get the data from the "https://jsonplaceholder.typicode.com/posts" url using the getDataAPI slice.
-2. Store the response data in the userData slice array of object.
-3. Display the userData's data array of object in the APIDisplay component.
-4. Export the data userData's data array of object into the ExportExcel component's excelData props.
-5. Click the ExportExcel's button component {DOWNLOAD AS USERDATA EXCEL} to export the data from the APIDisplay component and save it as an Excel File.
+2. APIDisplay component calls the getDataAPI's function: getAllUserQuery() and stores the data in the const responseInfo variable.
+3. APIDisplay's useEffect will have the responseInfo variable inside it. It will have responseInfo.data as a triggering condition for it to re-render the effects.
+4. Once responseInfo has the response data, it will then push it in the array const newArray while assigning new name for each object: ID, UserID, Title, and Body.
+5. If newArray has a length, it will do a forEach loop where it wil iterate through every index and then dispatch the addUsers() reducer of userData slice and pass the data to it.
+6. addUsers() will then push each object it receives into the state.data of the reducer's initialState.
+7. Back in the APIDisplay component, a const variable getUsers will get the data from the state.data using useSelector.
+8. A const variable called userList will have getUsers assigned to it. If getUsers has length, it will map and return its array of objects to a React.Fragment component and display the UserID, ID, Title, and Body in a Card component. If it doesn't have length, it will instead return a <p> tag with the text No Post Yet.
+9. userList will then be called in the APIDisplay's return statement for display.
+10. Above userList, the functional component ExportExcel will be displayed.
+11. getUsers will be passed to ExportExcel's prop excelData.
+12. ExportExcel has a function called exportToExcel which will have an async arrow function.
+13. Inside it, there will be a rows const variable where it will map the excelData and rearrange the data to be prepared for exporting.
+14. There will be an imported package called XLSX from sheetjs-style. This package will be the one responsible for creating the excel spreadsheet.
+15. A variable const worksheet will convert rows into an excel spreadsheet file using some of the XLSX's functions.
+16. A variable const workbook will create a new excel book using some of the XLSX's functions.
+17. XLSX will then append workbook, worksheet, and also name the worksheet as "Sheet1".
+18. XLSX will create the column headings: "USERID", "ID", "Title", and "Body", and set the start of the column heading at A1.
+19. worksheet["!cols"] will set the column's width.
+20. XLSX will then use its writeFile function to export the workbook variable with the name "UserData.xlsx", while also setting its default compression style to zip.
+21. Finally, ExportExcel has a button with the text "Download UserData as Excel" where once clicked it will call the exportToExcel function earlier and will download the exported UserData.xlsx file.
 
 
   The data from the url:
