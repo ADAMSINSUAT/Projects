@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import image from "../assets/React_logo.png";
 import { Link } from "react-router-dom";
 
-const pages = ["About", "Contact", "Employee"];
+const pages = ["Dashboard", "PopularPlayer", "About", "Contact"];
 
 const NavBar = () => {
     return (

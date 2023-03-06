@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Router from "./Router";
 import { Box } from "@mui/material"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./modules/Home";
-import Contact from "./modules/Contact";
-import About from "./modules/About";
-import NavBar from "./modules/NavBar";
-import Register from "./modules/Register";
 
 class App extends Component {
 
