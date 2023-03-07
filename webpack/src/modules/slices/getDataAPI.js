@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { REHYDRATE } from "redux-persist";
 
 // Create a new createApi function
 export const getDataAPI = createApi({
@@ -10,6 +11,11 @@ export const getDataAPI = createApi({
         // Sets the url for for the API
         baseUrl: "https://livescore6.p.rapidapi.com/",
     }),
+    extractRehydrationInfo(action, { reducerPath }) {
+        if (action.type === REHYDRATE) {
+            return action.payload[reducerPath]
+        }
+    },
 
     // Created an endpoint object
     endpoints: (builder) => ({

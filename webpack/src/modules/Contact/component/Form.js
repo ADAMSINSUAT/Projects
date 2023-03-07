@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react"
 import { FormHelperText, FormControl, Collapse, Alert, Card, CardContent, Typography, TextField, Stack, Select, MenuItem, Button, Box, InputLabel, Input } from "@mui/material"
-import { countryList } from "../../../assets/countries"
+import { countryList } from "../../../assets/countries";
+import { useSelector, useDispatch } from "react-redux";
+import { addFeedback } from "../../slices/feedbackData";
 
 export default function Form() {
+    const dispatch = useDispatch();
+    const feedback = useSelector(state => state.feedback.feedbackData);
+
     const [firstName, setFirstName] = useState(""); //variable for the first name
     const [lastName, setLastName] = useState(""); //variable for the last name
     const [countrySelect, setCountrySelect] = useState(""); //variable for the country selected
@@ -11,7 +16,7 @@ export default function Form() {
     const [successShow, setSuccessShow] = useState(false); //variable for showing the modal upon 
     //successful sending of feedback/thoughs
 
-    const [countDownSeconds, setCountDownSeconds] = useState(5); //variable for the duration for showing the modal for successful
+    const [countDownSeconds, setCountDownSeconds] = useState(10); //variable for the duration for showing the modal for successful
     //sending of feedback/thoughs
 
     const [firstNameError, setFirstNameError] = useState(false); //variable for showing the error text for first name
@@ -26,7 +31,7 @@ export default function Form() {
 
 
     useEffect(() => { //useEffect is used to set the modal to show upon successful submission of feedback/thoughts
-        if (firstNameError || lastNameError || countryError || subjectError || successShow) {
+        if (!firstNameError || !lastNameError || !countryError || !subjectError || successShow) {
             if (countDownSeconds > 0) {
                 setTimeout(() => setCountDownSeconds(countDownSeconds - 1), 1000); //this is for counting down the seconds.
                 //setTimeOut is a function for proper
@@ -38,73 +43,65 @@ export default function Form() {
 
                 setSuccessShow(false); //sets the collapse modal to hide again
 
-                setCountDownSeconds(5); //resets the count down seconds to 5 again
+                setCountDownSeconds(10); //resets the count down seconds to 5 again
             }
         }
-    }, [countDownSeconds, firstNameError, lastNameError, countryError, subjectError, successShow])
 
-    //Function for detecting the value changes of each input fields
-    function handleChange(e) {
-        if (e.target.id == "firstName") {
-            validateFirstName(e.target.value)
-        }
-        if (e.target.id == "lastName") {
-            validateLastName(e.target.value);
-        }
-        // if (e.target.id == "countrySelect") {
-        //     validateCountry(e.target.value);
-        // }
-        if (e.target.id == "subject") {
-            validateSubject(e.target.value);
-        }
-    }
-
-    //Functions for validating the input fields
-    function validateFirstName(value) {
-        setFirstName(value)
-        if (value == "" || value.length <= 0) { //condition for checking if first name is empty or not
+        if (firstName == "" || firstName.length <= 0) { //condition for checking if first name is empty or not
             setFirstNameErrorMessage("You must include your first name"); //sets the error message for first name
             setFirstNameError(true); //show the first name error message
         }
-        else{
-
+        else {
+            setFirstNameErrorMessage(""); //sets the error message for first name
+            setFirstNameError(false); //show the first name error message
         }
-        return firstNameError; //returns the value of firstNameError
-    }
 
-    function validateLastName(value) {
-        if (value == "" || value.length <= 0) { //condition for checking if last name is empty or not
+        if (lastName == "" || lastName.length <= 0) { //condition for checking if last name is empty or not
             setLastNameErrorMessage("You must include your last name"); //sets the error message for last name
             setLastNameError(true); //show the last name error message
         }
-        return lastNameError; //returns the value of lastNameError
-    }
+        else {
+            setLastNameErrorMessage(""); //sets the error message for last name
+            setLastNameError(false); //show the last name error message
+        }
 
-    function validateCountry(value) {
-        if (value == "" || value == "None" || value.length <= 0) { //condition for checking if country selected is empty or None
+        if (countrySelect == "" || countrySelect == "None") { //condition for checking if country selected is empty or None
             setCountryErrorMessage("You must include your country"); //sets the error message for country selected
             setCountryError(true); //show the country selected error message
         }
-        return countryError; //returns the value of countryError
-    }
+        else {
+            setCountryErrorMessage(""); //sets the error message for country selected
+            setCountryError(false); //show the country selected error message
+        }
 
-    function validateSubject(value) {
-        if (value == "" || value.length <= 0) { //condition for checking if feedback/thoughts is empty or not
+        if (subject == "" || subject.length <= 0) { //condition for checking if feedback/thoughts is empty or not
             setSubjectErrorMessage("You must include your feedback/thoughts"); //sets the error message for feedback/thoughts
             setSubjectError(true); //show the feedback/thoughts error message
         }
-        return subjectError; //returns the value of subjectError
-    }
-    //
+        else {
+            setSubjectErrorMessage(""); //sets the error message for feedback/thoughts
+            setSubjectError(false); //show the feedback/thoughts error message
+        }
+
+    }, [countDownSeconds, firstName, firstNameError, firstNameErrorMessage, lastName,
+        lastNameError, lastNameErrorMessage, countrySelect, countryError,
+        countryErrorMessage, subject, subjectError, subjectErrorMessage, successShow])
+
 
     function handleSubmit(e) { //function for submitting the feedback/thoughs of the user
         e.preventDefault();
 
-        console.log("Failed")
-
-        if (validateFirstName(firstName) && validateLastName(lastName) && validateCountry(countrySelect) && validateSubject(subject)) { //checks if all the error checks for all fields are false in order for it to submit it
+        if (!firstNameError && !lastNameError && !countryError && !subjectError) { //checks if all the error checks for all fields are false in order for it to submit it
             setSuccessShow(true); //shows the modal for successfully submitting the feedback/thoughs
 
+
+            dispatch(addFeedback({
+                ID: feedback.length > 0 ? parseInt(feedback.length)+1 : 1,
+                FirstName: firstName,
+                LastName: lastName,
+                Country: countrySelect,
+                Subject: subject,
+            }))
             //Sets the first name, last name, country selected, and subject back to blank/""
             setFirstName("");
             setLastName("");
@@ -132,7 +129,7 @@ export default function Form() {
 
     return (
         <Box component="form" onSubmit={handleSubmit}>
-            <Collapse in={successShow} sx={{ marginBottom:"1px", marginTop:"2px" }}>
+            <Collapse in={successShow} sx={{ marginBottom: "1px", marginTop: "2px" }}>
                 <Alert sx={{ minWidth: "500px", width: "500px" }} severity="info">
                     <Typography sx={{ width: "300px" }} textAlign="end">Thank you for sending us your thoughts!</Typography>
                 </Alert>
@@ -146,15 +143,15 @@ export default function Form() {
                     <Stack alignItems="left" justifyContent="center" direction="column" sx={{ marginTop: "1px" }} spacing={1}>
 
                         <Typography sx={{ width: "100%" }}>First Name: </Typography>
-                        <TextField id="firstName" value={firstName} onChange={(e) => handleChange(e)} error={firstNameError} helperText={firstNameErrorMessage} label="Write your first name here..."></TextField>
+                        <TextField id="firstName" value={firstName} onChange={(e) =>setFirstName(e.target.value)} error={firstNameError} helperText={firstNameErrorMessage} label="Write your first name here..."></TextField>
 
                         <Typography sx={{ width: "100%" }}>Last Name: </Typography>
-                        <TextField id="lastName" value={lastName} onChange={(e) => handleChange(e)} error={lastNameError} helperText={lastNameErrorMessage} label="Write your last name here..."></TextField>
+                        <TextField id="lastName" value={lastName} onChange={(e) =>setLastName(e.target.value)} error={lastNameError} helperText={lastNameErrorMessage} label="Write your last name here..."></TextField>
 
                         <Typography sx={{ width: "100%" }}>Country: </Typography>
                         <FormControl error={countryError}>
-                            <Select id="countrySelect" inputProps={{ 'aria-label': 'Without label' }} displayEmpty sx={{ width: "20%" }} value={countrySelect} onChange={(e) => handleChange(e)}>
-                                <MenuItem value={"None"} >None</MenuItem>
+                            <Select id="countrySelect" inputProps={{ 'aria-label': 'Without label' }} sx={{ width: "20%" }} value={countrySelect} onChange={(e) =>setCountrySelect(e.target.value)}>
+                                <MenuItem value="None">None</MenuItem>
                                 {countryList.map((data, index) => (
                                     <MenuItem value={data} key={index}>{data}</MenuItem>
                                 ))}
@@ -163,7 +160,7 @@ export default function Form() {
                         </FormControl>
 
                         <Typography sx={{ width: "100%" }}>Tell us something: </Typography>
-                        <TextField id="subject" value={subject} onChange={(e) => handleChange(e)} error={subjectError} helperText={subjectErrorMessage} multiline rows={10} label="Subject"></TextField>
+                        <TextField id="subject" value={subject} onChange={(e) =>setSubject(e.target.value)} error={subjectError} helperText={subjectErrorMessage} multiline rows={10} label="Subject"></TextField>
 
                         <Button variant="contained" sx={{ width: "25%", height: "25%", left: "35%" }} type="submit">Submit</Button>
                     </Stack>
