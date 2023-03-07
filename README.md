@@ -1,4 +1,4 @@
-# Adam-Sinsua-Mini-Project
+# Adam-Sinsuat-Mini-Project
 
 React-Redux, ReduxJS Toolkit, Axios
 
@@ -32,8 +32,8 @@ This project is about creating a website where it has:
   **The api will mainly retrieve the Aid(Player ID), Pnm(Player Name), Scrs(Player points list), Pid(Player External ID), and Rnk(Player Rank).
 
 * A Dashboard page where it has two tab panels: form page and scorepage. 
-  **Form page is where it retrieves the name of players from the playerData reducer and displays it in a select component and allows the admin to add scores     to them by way of a textfield set up as a stepper. It also has a validation where it will return an error whenever the admin will submit the score           without a player name or when the admin sends a score less than or equal to zero.
-  **Scorepage tabpanel where it displays the list of players from the playerData reducer after retrieveing it and shows the added scores from the Form tab of     the dashboard page.
+  ** Form page is where it retrieves the name of players from the playerData reducer and displays it in a select component and allows the admin to add scores     to them by way of a textfield set up as a stepper. It also has a validation where it will return an error whenever the admin will submit the score           without a player name or when the admin sends a score less than or equal to zero.
+  ** Scorepage tabpanel where it displays the list of players from the playerData reducer after retrieveing it and shows the added scores from the Form tab        of the dashboard page.
 
 ## Run Locally
 
