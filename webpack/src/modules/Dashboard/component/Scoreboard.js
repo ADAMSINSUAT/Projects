@@ -39,7 +39,7 @@ export default function ScorePage() {
                                 Rank: {data.Rnk}
                             </Typography>
                             <Typography textAlign="center" gutterBottom variant="h5">
-                                Player ID: {data.Pid}
+                                Player External ID: {data.Pid}
                             </Typography>
                             <Typography textAlign="center" gutterBottom variant="h5">
                                 Scores: {data.Scrs}
