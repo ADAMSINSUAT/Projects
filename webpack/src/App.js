@@ -1,26 +1,22 @@
 import React, { Component } from "react";
 import Router from "./Router";
-import { Box } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Components/Home";
-import Contact from "./Components/Contact";
-import About from "./Components/About";
-import NavBar from "./components/NavBar";
-import Register from "./Components/Register";
+import GetAllAppointments from "./components/GetAllAppointments";
+import GetAppointmentById from "./components/GetAppointmentById";
+import NavBar from "./assets/common/NavBar";
+import AddAppointment from "./components/AddAppointment";
 
 class App extends Component {
-  
   render() {
     return (
-      <Box justifyContent="center" sx={{ height: "100%", bgcolor: "blue", p: 2, my: -1, mx: -1, flexWrap: "wrap", flexGrow:1 }}>
-        {/* <Router /> */}
+      <Box justifyContent="center" sx={{ height: "100%", bgcolor: "blue", p: 2, my: -1, mx: -1, flexWrap: "wrap", flexGrow: 1 }}>
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path="/home" element={<Home/>} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/getallappointments" element={<GetAllAppointments />} />
+            <Route exact path="/getappointmentbyid" element={<GetAppointmentById />} />
+            <Route exact path="/addappointment" element={<AddAppointment />} />
           </Routes>
         </BrowserRouter>
       </Box>
