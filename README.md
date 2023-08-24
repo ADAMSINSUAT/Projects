@@ -16,7 +16,7 @@ This project is about retrieving data from an api: "https://jsonplaceholder.typi
 5. If newArray has a length, it will do a forEach loop where it wil iterate through every index and then dispatch the addUsers() reducer of userData slice and pass the data to it.
 6. addUsers() will then push each object it receives into the state.data of the reducer's initialState.
 7. Back in the APIDisplay component, a const variable getUsers will get the data from the state.data using useSelector.
-8. A const variable called userList will have getUsers assigned to it. If getUsers has length, it will map and return its array of objects to a React.Fragment component and display the UserID, ID, Title, and Body in a Card component. If it doesn't have length, it will instead return a <p> tag with the text No Post Yet.
+8. A const variable called userList will have getUsers assigned to it. If getUsers has length, it will map and return its array of objects to a React.Fragment component and display the UserID, ID, Title, and Body in a Card component. If it doesn't have length, it will instead return a "<p>" tag with the text No Post Yet.
 9. userList will then be called in the APIDisplay's return statement for display.
 10. Above userList, the functional component ExportExcel will be displayed.
 11. getUsers will be passed to ExportExcel's prop excelData.
