@@ -4,7 +4,7 @@ Routing, api calls, axios, and componentDidMount
 
 ## Features
 
-- Introduces the concept of linking multiple pages together by using react-router-rom. Also includes api calls such as GET to retrieve a list of data from the database. Used axios to achieve api calls. componentDidMount is a method where data is displayed only if the data is ready to be displayed.
+- Introduces the concept of linking multiple pages together by using react-router-dom. Also includes api calls such as GET to retrieve a list of data from the database. Used axios to achieve api calls. componentDidMount is a method where data is displayed only if the data is ready to be displayed.
 
 ## Run Locally
 
